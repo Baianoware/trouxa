@@ -1,6 +1,6 @@
 # Trouxa
 
-Instale seus pocotes de maneria fácil e rápida, com apenas um comando independente de sua distribuição.
+Instale seus pacotes de maneria fácil e rápida, com apenas um comando independente de sua distribuição.
 
 ## O que é?
 
