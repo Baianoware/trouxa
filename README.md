@@ -23,3 +23,21 @@ Se guarda pano/objetos, porque não guardar *Softwares?*
     - Compilada
 - Criar *scripts* específicas para cada programa em cada gerenciador de pacotes de cada distribuição
     - Liberar a criação de *Scripts* de instalação para a comunidade, facilitando a adoção
+
+## Histórias dos usuários
+
+"Acabei de instalar um sistema novo, tenho a lista dos programas que vou utilizar, ao invés de instalá-los um a um, posso simplesmente criar um aquivo simples, com o nome de todos e a versão, *latest*, e pedir para o **Trouxa** fazer essas operações para mim." ~ Jhon Doe
+
+## Caracterísitcas
+
+- CLI
+- Portável
+- Loggável (produzirá *logs* durante a instação)
+- Arquivo de configuração simples, para ser inscrito a qualquer momento
+
+    ```
+    python /3.0.0
+    pycharm /latest
+    vim /lastes
+    node /16.2.2
+    ```
