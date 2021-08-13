@@ -4,7 +4,7 @@ Instale seus pacotes de maneria fácil e rápida, com apenas um comando independ
 
 ## O que é?
 
-Inspirado pelo projeto de script para instalação de pacotes comuns em seu sistema, tive um *insigh*. Um pequeno programa, CLI mesmo, para fazer algo parecido, um pouco mais customizado, utilizando *scirpts* específicos para cada pacote; vou tentar exemplificar.
+Inspirado pelo projeto do Gustavo do script para instalação de pacotes comuns em seu sistema, tive um *insigh*. Um pequeno programa, CLI mesmo, para fazer algo parecido, um pouco mais customizado, utilizando *scirpts* específicos para cada pacote; vou tentar exemplificar.
 
 Imagine a seguinte situação: você acabou de instalar o seu sistema, e precisa dos programas que utiliza no dia-a-dia, você poderia simplesmente carregar um arquivo com a lista dos programas e versões que necessita e requerer a instalação de todos eles, independentemente da sua distribuição; essa é a ideia do **Trouxa**, simplificar essa instalação através de uma inferface única, independente da distribuição.
 
