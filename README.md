@@ -14,19 +14,21 @@ Imagine a seguinte situação: você acabou de instalar o seu sistema, e precisa
 
 Se guarda pano/objetos, porque não guardar *Softwares?*
 
-## Proposta
+# Proposta
 
 - Utilizar a linguagem **Go**
-    - Simplicidade
-    - Velocidade
-    - Ferramentas
-    - Compilada
+  - Simplicidade
+  - Velocidade
+  - Ferramentas
+  - Compilada
 - Criar *scripts* específicas para cada programa, para cada gerenciador de pacotes de cada distribuição.
-    - Liberar a criação de *Scripts* de instalação para a comunidade, facilitando a adoção
+  - Liberar a criação de *Scripts* de instalação para a comunidade, facilitando a adoção
 
-## Histórias dos usuários
-
-"Acabei de instalar um sistema novo, tenho a lista dos programas que vou utilizar, ao invés de instalá-los um a um, posso simplesmente criar um aquivo simples, com o nome de todos e a versão, *latest*, e pedir para o **Trouxa** fazer essas operações para mim." ~ Jhon Doe
+## Como utilizar?
+```sh
+trouxa -p ./packages.txt
+trouxa --help
+```
 
 ## Caracterísitcas
 
@@ -41,6 +43,10 @@ Se guarda pano/objetos, porque não guardar *Softwares?*
     neovim:lastet
     node:16.2.2
     ```
+  
+## Histórias dos usuários
+
+"Acabei de instalar um sistema novo, tenho a lista dos programas que vou utilizar, ao invés de instalá-los um a um, posso simplesmente criar um aquivo simples, com o nome de todos e a versão, *latest*, e pedir para o **Trouxa** fazer essas operações para mim." ~ Jhon Doe
   
 ## Informações extras úteis
 - https://github.com/golang-standards/project-layout
