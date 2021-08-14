@@ -2,6 +2,7 @@ package internal
 
 import "testing"
 
-func TestLoadConfigurationFile(t *testing.T) {
-	LoadConfigurationFile()
+func TestParserConfigurationFile(t *testing.T) {
+	parser := Parser{Sep: ":"}
+	parser.Parse()
 }

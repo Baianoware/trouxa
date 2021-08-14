@@ -5,7 +5,6 @@ import (
 	"github.com/Bainoware/trouxa/internal/entities"
 	"io/ioutil"
 	"log"
-	"os"
 	"strings"
 )
 
@@ -16,26 +15,28 @@ func loadFile(path string) []byte {
 	}
 	return data
 }
-
 func splitLines(data []byte) []string {
 	return strings.Split(string(data), "\n")
 }
-func splitNameVersion(data []string) [][]string {
+func splitNameVersion(data []string, sep string) [][]string {
 	var lines [][]string
 	for _, line := range data {
-		lines = append(lines, strings.Split(line, ":"))
+		lines = append(lines, strings.Split(line, sep))
 	}
 	return lines
 }
 
-func LoadConfigurationFile() []entities.Package {
+type Parser struct {
+	Sep string
+}
+
+func (p *Parser) Parse() []entities.Package {
 	dataFromFile := loadFile("../config/packages.txt")
-	split := splitNameVersion(splitLines(dataFromFile))
+	split := splitNameVersion(splitLines(dataFromFile), ":")
 	var packages []entities.Package
 	for _, line := range split {
 		if line[0] == "" || line[1] == "" {
 			log.Fatal("Error in the configuration file")
-			os.Exit(1)
 		}
 		packages = append(packages, entities.Package{Name: line[0], Version: line[1]})
 	}
