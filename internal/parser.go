@@ -30,8 +30,8 @@ type Parser struct {
 	Sep string
 }
 
-func (p *Parser) Parse() []entities.Package {
-	dataFromFile := loadFile("../config/packages.txt")
+func (p *Parser) ParsePackagesFile(packagesFilePath string) []entities.Package {
+	dataFromFile := loadFile(packagesFilePath)
 	split := splitNameVersion(splitLines(dataFromFile), ":")
 	var packages []entities.Package
 	for _, line := range split {
