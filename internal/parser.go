@@ -11,34 +11,28 @@ import (
 func loadFile(path string) []byte {
 	data, err := ioutil.ReadFile(path)
 	if err != nil {
-		panic(err)
+		log.Fatal("could not find the packages file", err)
 	}
 	return data
 }
 func splitLines(data []byte) []string {
 	return strings.Split(string(data), "\n")
 }
-func splitNameVersion(data []string, sep string) [][]string {
-	var lines [][]string
-	for _, line := range data {
-		lines = append(lines, strings.Split(line, sep))
-	}
-	return lines
-}
 
+//TODO Improve on unused struct
 type Parser struct {
-	Sep string
 }
 
+// ParsePackagesFile load the packages files
 func (p *Parser) ParsePackagesFile(packagesFilePath string) []entities.Package {
 	dataFromFile := loadFile(packagesFilePath)
-	split := splitNameVersion(splitLines(dataFromFile), ":")
+	lines := splitLines(dataFromFile)
 	var packages []entities.Package
-	for _, line := range split {
-		if line[0] == "" || line[1] == "" {
+	for _, line := range lines {
+		if line == "" {
 			log.Fatal("Error in the configuration file")
 		}
-		packages = append(packages, entities.Package{Name: line[0], Version: line[1]})
+		packages = append(packages, entities.Package{Name: line})
 	}
 	return packages
 }

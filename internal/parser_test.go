@@ -3,6 +3,6 @@ package internal
 import "testing"
 
 func TestParserConfigurationFile(t *testing.T) {
-	parser := Parser{Sep: ":"}
+	parser := new(Parser)
 	parser.ParsePackagesFile("../config/packages.txt")
 }

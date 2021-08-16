@@ -1,3 +1,2 @@
-python:3
-node:16.0.1
-java:stable
+python
+vim

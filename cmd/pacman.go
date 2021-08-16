@@ -1,8 +1,11 @@
 package main
 
 import (
-	"fmt"
+	"github.com/Bainoware/trouxa/internal"
+	"github.com/Bainoware/trouxa/internal/manager"
 	"github.com/spf13/cobra"
+	"log"
+	"os"
 )
 
 var pathPackages string
@@ -12,8 +15,15 @@ var pacmanCmd = &cobra.Command{
 	Short: "Use pacman to download the packages",
 	Long:  "Use pacman for download the packages",
 	Run: func(command *cobra.Command, args []string) {
-		//TODO Implements here
-		fmt.Println("The package path is", pathPackages)
+		parser := new(internal.Parser)
+		packages := parser.ParsePackagesFile(pathPackages)
+		manager := new(manager.ManagerPacman)
+		for _, package_ := range packages {
+			if err, ok := manager.InstallPackage(package_.Name); !ok {
+				log.Fatalf("Could not install ", package_.Name, ". aborting cuz' ", err)
+			}
+		}
+		os.Exit(0)
 	},
 }
 

@@ -13,15 +13,15 @@ type Manager interface {
 }
 
 // runCommand Execute a command and send the output to default Stdout and Stderr
-func runCommand(cmd *exec.Cmd) bool {
+func runCommand(cmd *exec.Cmd) (error, bool) {
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	log.Println("Trying to run the command")
 	err := cmd.Run()
 	if err != nil {
-		log.Fatal("Could not run the command", err)
-		return false
+		log.Println("could not run the command ", err)
+		return err, false
 	}
 	log.Println("Command executed")
-	return true
+	return nil, true
 }
