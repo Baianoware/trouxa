@@ -8,8 +8,6 @@ import (
 	"os"
 )
 
-var pathPackages string
-
 var pacmanCmd = &cobra.Command{
 	Use:   "pacman -p packages.txt",
 	Short: "Use pacman to download the packages",
@@ -17,12 +15,13 @@ var pacmanCmd = &cobra.Command{
 	Run: func(command *cobra.Command, args []string) {
 		parser := new(internal.Parser)
 		packages := parser.ParsePackagesFile(pathPackages)
-		manager := new(manager.ManagerPacman)
+		manager := new(manager.Pacman)
 		for _, package_ := range packages {
 			if err, ok := manager.InstallPackage(package_.Name); !ok {
 				log.Fatalf("Could not install ", package_.Name, ". aborting cuz' ", err)
 			}
 		}
+		log.Println("All packages have installed!")
 		os.Exit(0)
 	},
 }

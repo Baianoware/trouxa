@@ -5,12 +5,11 @@ import (
 	"os/exec"
 )
 
-//TODO Fix it
-type ManagerPacman struct {
+type Pacman struct {
 }
 
 // InstallPackage install a package with the Pacman package manager
-func (a ManagerPacman) InstallPackage(name string) (error, bool) {
+func (a Pacman) InstallPackage(name string) (error, bool) {
 	cmd := exec.Command("pacman", "-Sy", name, "--noconfirm")
 	log.Println("Installing package", name)
 	if err, ok := runCommand(cmd); !ok {
@@ -22,7 +21,7 @@ func (a ManagerPacman) InstallPackage(name string) (error, bool) {
 }
 
 // UninstallPackage uninstall a package with the Pacman package manager
-func (a ManagerPacman) UninstallPackage(name string) (error, bool) {
+func (a Pacman) UninstallPackage(name string) (error, bool) {
 	cmd := exec.Command("pacman", "-Rs", name, "--noconfirm")
 	log.Println("Uninstalling package", name)
 	if err, ok := runCommand(cmd); !ok {
