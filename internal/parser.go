@@ -30,7 +30,7 @@ func (p *Parser) ParsePackagesFile(packagesFilePath string) []entities.Package {
 	var packages []entities.Package
 	for _, line := range lines {
 		if line == "" {
-			log.Fatal("Error in the configuration file")
+			log.Fatal("Error in the configuration file: a line is empty")
 		}
 		packages = append(packages, entities.Package{Name: line})
 	}
