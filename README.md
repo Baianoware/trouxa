@@ -35,7 +35,7 @@ go run ./cmd/
 Ou construir o binário para a pasta `build` e utilizá-lo com mais liberdade, como foi pensando:
 
 ```sh
-go build -o ../build/trouxa ./cmd/
+go build -o build/trouxa ./cmd/
 ```
 
 Ele funcionará conforme o gerenciador de pacotes da distribuição.
