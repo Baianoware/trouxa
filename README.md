@@ -48,7 +48,7 @@ trouxa pacman -p packages.txt
 
 Ou sem especificar o nome do arquivo, se o mesmo já existir com o nome `packages.txt` no mesmo diretório:
 ```sh
-trouxa pacman -p
+trouxa pacman
 ```
 
 ## Características
