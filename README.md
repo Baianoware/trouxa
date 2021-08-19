@@ -1,70 +1,58 @@
 # Trouxa
 
-Instale os seus pacotes de maneira fácil e rápida, com apenas um comando.
+It is an easy and fast tool to install your packages with just one command.
 
-## O que é?
+### What means "Trouxa"?
 
-Inspirado pelo projeto do Gustavo do script para instalação de pacotes comuns no seu sistema, tive um *insigh*. Um
-pequeno programa, CLI mesmo, para fazer algo parecido, um pouco mais customizado, utilizando; vou tentar exemplificar.
+In portuguese, Trouxa means something like a "bundle of clothes", but it is also a pejorative term like mug, gink, muggle. 
+Thinking in the first meaning, why not let this bundle carry Packages too? (It does not make sense, I know lol)
 
-Imagine a seguinte situação: você acabou de instalar o seu sistema, e precisa dos programas que utiliza no dia a dia,
-você poderia simplesmente carregar um arquivo com a lista dos programas e versões que necessita e requerer a instalação
-de todos eles, independentemente da sua distribuição; essa é a ideia do **Trouxa**, simplificar essa instalação através
-de uma interface única, independente da distribuição.
+### Why use it?
+With trouxa, you can install many packages just noting it in a file, `packages.txt`, and selecting your package manager.
 
-### Porque do nome Trouxa?
+If you are using the a Arch based distro like me, you just need create a file with your needs, and run a command.
 
-No dicionário, trouxa significa: Embrulho, geralmente feito com pano, para guardar ou transportar objetos; trouxo.
-
-# Proposta
-
-- Utilizar a linguagem **Go**
-    - Simplicidade
-    - Velocidade
-    - Ferramentas
-    - Compilada
-
-## Como utilizar?
-
-Você pode rodar o projeto direto com:
-
-```sh
-go run ./cmd/ 
+```text
+python
+vim
+nano
+and many others packages....
 ```
-
-Ou construir o binário para a pasta `build` e utilizá-lo com mais liberdade, como foi pensando:
-
-```sh
-go build -o build/trouxa ./cmd/
-```
-
-Ele funcionará conforme o gerenciador de pacotes da distribuição.
-
-Por exemplo, num sistema que faz o uso do *pacman* a utilização ficaria assim:
-
+and run it on the same directory as the `packages.txt`
 ```sh
 trouxa pacman -p packages.txt
 ```
-
-Ou sem especificar o nome do arquivo, se o mesmo já existir com o nome `packages.txt` no mesmo diretório:
+If the file is with the name `packages.txt`, you cannot specify it because this is the default value of `-p`
 ```sh
 trouxa pacman
 ```
 
-## Características
 
-- CLI
-- Portável
-- Loggável (produzirá *logs* durante a instalação)
-- Arquivo de configuração simples, para ser inscrito a qualquer momento.
+### Package managers supported
+- pacman
+- yay
 
-    ```
-    python
-    pycharm
-    neovim
-    node
-    ```
+## How to install
 
-## Informações extras úteis
+### Build
+To build you will need the `Go` environment in version `1.16` and `make` installed.
+```sh
+make build
+```
+
+### Install
+```sh
+sudo make install 
+```
+The binary compiled will be copied to your `/usr/bin` and available through the command trouxa in your terminal
+
+## Features 
+
+- Portable
+- Easy
+- Fast
+- Simple
+
+### Extras
 
 - https://github.com/golang-standards/project-layout
