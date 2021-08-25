@@ -1,4 +1,4 @@
-package main
+package commands
 
 import (
 	"github.com/Bainoware/trouxa/internal"
@@ -9,7 +9,8 @@ import (
 )
 
 var yayCmd = &cobra.Command{
-	Use:   "yay -p packages.txt",
+	Example: "pacman -p packages.txt",
+	Use:   "yay",
 	Short: "Use yay to download the packages",
 	Long:  "Use yay for download the packages",
 	Run: func(command *cobra.Command, args []string) {
@@ -33,5 +34,5 @@ func init() {
 		"p",
 		"./packages.txt",
 		"The file used by Trouxa to download de packages to your system")
-	rootCmd.AddCommand(yayCmd)
+	RootCmd.AddCommand(yayCmd)
 }

@@ -2,11 +2,12 @@ package main
 
 import (
 	"fmt"
+	commands "github.com/Bainoware/trouxa/cmd"
 	"os"
 )
 
 func main() {
-	if err := rootCmd.Execute(); err != nil {
+	if err := commands.RootCmd.Execute(); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
