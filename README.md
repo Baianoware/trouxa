@@ -24,7 +24,7 @@ and run it on the same directory as the `packages.txt`
 ```sh
 trouxa pacman -p packages.txt
 ```
-If the file is with the name `packages.txt`, you cannot specify it because this is the default value of `-p`
+If the file is with the name `packages.txt`, you could not specify it because this is the default value of `-p`
 ```sh
 trouxa pacman
 ```
