@@ -1,3 +1,4 @@
+[![Go Report Card](https://goreportcard.com/badge/github.com/Baianoware/trouxa)](https://goreportcard.com/report/github.com/Baianoware/trouxa)
 # Trouxa
 
 It is an easy and fast tool to install your packages with just one command.
