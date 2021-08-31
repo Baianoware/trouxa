@@ -2,16 +2,17 @@
 package internal
 
 import (
-	"github.com/Bainoware/trouxa/internal/entities"
 	"io/ioutil"
 	"log"
 	"strings"
+
+	"github.com/Bainoware/trouxa/internal/entities"
 )
 
 func loadFile(path string) []byte {
 	data, err := ioutil.ReadFile(path)
 	if err != nil {
-		log.Fatal("could not find the packages file", err)
+		log.Fatal("Could not find the packages file", err)
 	}
 	return data
 }
