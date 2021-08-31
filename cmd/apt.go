@@ -19,7 +19,7 @@ var aptCmd = &cobra.Command{
 		packages := parser.ParsePackagesFile(pathPackages)
 		manager := new(manager.Apt)
 		for _, package_ := range packages {
-			if err, ok := manager.InstallPackage(package_.Name); !ok {
+			if ok, err := manager.InstallPackage(package_.Name); !ok {
 				log.Fatalln("Could not install ", package_.Name, ". aborting cuz' ", err)
 			}
 		}
