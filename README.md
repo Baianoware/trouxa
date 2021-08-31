@@ -30,9 +30,10 @@ trouxa pacman
 ```
 
 
-### Package managers supported
+## Package managers supported
 - pacman
 - yay
+- apt
 
 ## How to install
 
