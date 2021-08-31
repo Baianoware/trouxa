@@ -15,12 +15,11 @@ Trouxa is a simple application to install and remove packages at once by just us
 	Version: "0.0.1",
 }
 
-// TODO Add a flag to trouxa root command to define packages.txt instead create a new flag for each command
-//func init()  {
-//	RootCmd.Flags().StringVarP(
-//		&pathPackages,
-//		"path",
-//		"p",
-//		"./packages.txt",
-//		"File's path used by Trouxa to download the packages to your system")
-//}
+func addPackagFlag(cmd *cobra.Command) {
+	cmd.Flags().StringVarP(
+		&pathPackages,
+		"path",
+		"p",
+		"./packages.txt",
+		"The file used by Trouxa to download de packages to your system")
+}

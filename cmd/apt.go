@@ -29,11 +29,6 @@ var aptCmd = &cobra.Command{
 }
 
 func init() {
-	aptCmd.Flags().StringVarP(
-		&pathPackages,
-		"path",
-		"p",
-		"./packages.txt",
-		"The file used by Trouxa to download de packages to your system")
+	addPackagFlag(aptCmd)
 	RootCmd.AddCommand(aptCmd)
 }

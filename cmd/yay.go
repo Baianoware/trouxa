@@ -29,11 +29,6 @@ var yayCmd = &cobra.Command{
 }
 
 func init() {
-	yayCmd.Flags().StringVarP(
-		&pathPackages,
-		"path",
-		"p",
-		"./packages.txt",
-		"The file used by Trouxa to download de packages to your system")
+	addPackagFlag(yayCmd)
 	RootCmd.AddCommand(yayCmd)
 }
