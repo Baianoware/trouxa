@@ -8,8 +8,8 @@ import (
 
 // Manager Interface with methods used to each package manager implementation
 type Manager interface {
-	InstallPackage(name string) bool
-	UninstallPackage(name string) bool
+	InstallPackage(name string) (bool, error)
+	UninstallPackage(name string) (bool, error)
 }
 
 // runCommand Execute a command and send the output to default Stdout and Stderr
@@ -19,7 +19,7 @@ func runCommand(cmd *exec.Cmd) (bool, error) {
 	log.Println("Trying to run the command")
 	err := cmd.Run()
 	if err != nil {
-		log.Println("could not run the command ", err)
+		log.Println("Could not run the command ", err)
 		return false, err
 	}
 	log.Println("Command executed")
