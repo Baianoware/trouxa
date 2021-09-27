@@ -22,11 +22,11 @@ and many others packages....
 ```
 and run it on the same directory as the `packages.txt`
 ```sh
-trouxa pacman -p packages.txt
+trouxa -m pacman -p packages.txt
 ```
-If the file is with the name `packages.txt`, you could not specify it because this is the default value of `-p`
+If the file has the same name as `packages.txt` and in the actual execution directory, you do not need specify it because this is the default value for `-p`.
 ```sh
-trouxa pacman
+trouxa -m pacman
 ```
 
 
@@ -34,6 +34,7 @@ trouxa pacman
 - pacman
 - yay
 - apt
+- apk
 
 ## How to install
 
