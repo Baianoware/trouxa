@@ -19,11 +19,11 @@ func FromName(manager string) Commander {
 	// To no use reflection...
 	switch manager {
 	case "apt":
-		return &apt.Commander{}
+		return new(apt.Commander)
 	case "pacman":
-		return &pacman.Commander{}
+		return new(pacman.Commander)
 	case "yay":
-		return &yay.Commander{}
+		return new(yay.Commander)
 	default:
 		return nil
 	}
