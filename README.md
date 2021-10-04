@@ -12,21 +12,23 @@ Thinking in the first meaning, why not let this bundle carry Packages too? (It d
 ### Why use it?
 With trouxa, you can install many packages just noting it in a file, `packages.txt`, and selecting your package manager.
 
-If you are using the a Arch based distro like me, you just need create a file with your needs, and run a command.
-
+Example of `packages.txt`
 ```text
 python
 vim
 nano
-and many others packages....
 ```
-and run it on the same directory as the `packages.txt`
+and run it selecting the path of `packages.txt`
 ```sh
-trouxa -m pacman -p packages.txt
+trouxa -m pacman -p ~/packages.txt
 ```
-If the file has the same name as `packages.txt` and in the actual execution directory, you do not need specify it because this is the default value for `-p`.
+If the file has the same name as `packages.txt` and in the actual execution directory, you do not need to specify it because this is the default value for `-p`.
 ```sh
 trouxa -m pacman
+```
+You can use also a remote packages' list to install you tools
+```sh
+trouxa -m pacman -p https://pastebin.com/raw/ysHUVswx
 ```
 
 
