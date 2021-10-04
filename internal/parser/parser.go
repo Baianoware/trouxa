@@ -10,6 +10,7 @@ func splitLines(data []byte) []string {
 	return strings.Split(string(data), "\n")
 }
 
+// Parse the packages' list to entities.Packages
 func Parse(data []byte) []entities.Package {
 	lines := splitLines(data)
 	var packages []entities.Package

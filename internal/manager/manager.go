@@ -7,7 +7,6 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-// runCommand Execute a command and send the output to default Stdout and Stderr
 func runCommand(cmd *exec.Cmd) (bool, error) {
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
