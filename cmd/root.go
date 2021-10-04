@@ -1,13 +1,13 @@
 package commands
 
 import (
-	"os"
-
-	"github.com/Bainoware/trouxa/internal"
 	"github.com/Bainoware/trouxa/internal/commander"
+	"github.com/Bainoware/trouxa/internal/input"
 	"github.com/Bainoware/trouxa/internal/manager"
+	parser "github.com/Bainoware/trouxa/internal/parser"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
+	"os"
 )
 
 var packageManager string
@@ -25,12 +25,14 @@ Trouxa is a simple application to install and remove packages at once by just us
 		if commander == nil {
 			log.Fatalln("This package manager is not supported!")
 		}
-
-		parser := new(internal.Parser)
-		packages := parser.ParsePackagesFile(pathFilePackages)
+		data, err := input.GetData(pathFilePackages)
+		if err != nil {
+			log.WithError(err).Fatalln() // TODO
+		}
+		packages := parser.Parse(data)
 		for _, package_ := range packages {
 			if ok, err := manager.InstallPackage(package_.Name, commander.BuildInstallCommand(package_.Name)); !ok {
-				log.Fatalln("Could not install ", package_.Name, ". aborting cuz' ", err)
+				log.Fatalln("Could not install ", package_.Name, ". Aborting cuz' ", err)
 			}
 		}
 		log.Infoln("All packages have installed!")
