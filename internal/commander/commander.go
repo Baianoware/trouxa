@@ -4,6 +4,7 @@ import (
 	"os/exec"
 
 	"github.com/Bainoware/trouxa/internal/manager/apt"
+        "github.com/Bainoware/trouxa/internal/manager/apk"
 	"github.com/Bainoware/trouxa/internal/manager/pacman"
 	"github.com/Bainoware/trouxa/internal/manager/yay"
 )
@@ -20,6 +21,8 @@ func FromName(manager string) Commander {
 	switch manager {
 	case "apt":
 		return new(apt.Commander)
+        case "apk":
+		return new(apk.Commander)
 	case "pacman":
 		return new(pacman.Commander)
 	case "yay":
