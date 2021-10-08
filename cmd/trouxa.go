@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	commands "github.com/Bainoware/trouxa/cmd"
+	"github.com/Bainoware/trouxa/internal/commands"
 )
 
 func main() {

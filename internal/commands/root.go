@@ -1,13 +1,14 @@
 package commands
 
 import (
+	"os"
+
 	"github.com/Bainoware/trouxa/internal/commander"
 	"github.com/Bainoware/trouxa/internal/input"
 	"github.com/Bainoware/trouxa/internal/manager"
 	"github.com/Bainoware/trouxa/internal/parser"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
-	"os"
 )
 
 var packageManager string
