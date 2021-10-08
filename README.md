@@ -59,6 +59,22 @@ The binary compiled will be copied to your `/usr/bin` and available through the 
 - Fast
 - Simple
 
+## Examples
+
+### apk
+You can list all packages from a Alpine container, as exemple, and use this "dump" to install in another:
+
+```sh
+apk info > packages.txt
+```
+
+### pacman
+The same is true to `pacman`.
+
+```sh
+pacman -Qe | sed -e 's/\s.*$//' > packages.txt
+```
+
 ### Extras
 
 - https://github.com/golang-standards/project-layout
