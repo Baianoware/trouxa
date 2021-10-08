@@ -3,10 +3,12 @@ package commander
 import (
 	"os/exec"
 
+	"github.com/Bainoware/trouxa/internal/manager"
 	"github.com/Bainoware/trouxa/internal/manager/apk"
 	"github.com/Bainoware/trouxa/internal/manager/apt"
 	"github.com/Bainoware/trouxa/internal/manager/pacman"
 	"github.com/Bainoware/trouxa/internal/manager/yay"
+	log "github.com/sirupsen/logrus"
 )
 
 // Commander interface with methods used to build install and unistall commands
@@ -16,9 +18,13 @@ type Commander interface {
 }
 
 // FromName create a commander from a package manager mane
-func FromName(manager string) Commander {
+func FromName(name string) Commander {
+	if err := manager.IsValid(name); err != nil {
+		log.Debugln("Package manager not found on user's path")
+		return nil
+	}
 	// To no use reflection...
-	switch manager {
+	switch name {
 	case "apt":
 		return new(apt.Commander)
 	case "apk":

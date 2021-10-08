@@ -2,7 +2,6 @@ package parser
 
 import (
 	"github.com/Bainoware/trouxa/internal/entities"
-	"log"
 	"strings"
 )
 
@@ -16,8 +15,9 @@ func Parse(data []byte) []entities.Package {
 	var packages []entities.Package
 	for _, line := range lines {
 		if line == "" {
-			log.Fatal("Error in the configuration file: a line is empty")
+			continue
 		}
+		line = strings.TrimSpace(line)
 		packages = append(packages, entities.Package{Name: line})
 	}
 	return packages

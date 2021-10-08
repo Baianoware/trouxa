@@ -13,7 +13,7 @@ func runCommand(cmd *exec.Cmd) (bool, error) {
 	log.Debugln("Trying to run the command")
 	err := cmd.Run()
 	if err != nil {
-		log.Errorln("Could not run the command ", err)
+		log.WithError(err).Debugln("Could not run the command")
 
 		return false, err
 	}
@@ -22,11 +22,20 @@ func runCommand(cmd *exec.Cmd) (bool, error) {
 	return true, nil
 }
 
+// IsValid check if the package manager is set on user's PATH
+func IsValid(name string) error {
+	_, err := exec.LookPath(name)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
 // InstallPackage install a package with the apt package manager
 func InstallPackage(name string, cmd *exec.Cmd) (bool, error) {
-	log.Infoln("Installing package: ", name)
+	log.Infoln("Trying to install the package: ", name)
 	if ok, err := runCommand(cmd); !ok {
-		log.Errorln("Could not install the package. ", err)
+		log.WithError(err).Errorln("Could not install the package. ")
 
 		return false, err
 	}

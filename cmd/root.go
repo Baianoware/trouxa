@@ -21,9 +21,18 @@ Trouxa is a simple application to install and remove packages at once by just us
 `,
 	Version: "0.0.1",
 	Run: func(command *cobra.Command, args []string) {
+		installPackage := func(name string, commander commander.Commander) bool {
+			ok, _ := manager.InstallPackage(name, commander.BuildInstallCommand(name))
+			return ok
+		}
+		addTo := func(list *[]string, value string) {
+			*list = append(*list, value)
+		}
+		var successInstalledPackages []string
+		var failInstalledPackages []string
 		commander := commander.FromName(packageManager)
 		if commander == nil {
-			log.Fatalln("This package manager is not supported!")
+			log.Fatalln("This package manager is not supported or invalid for your system!")
 		}
 		data, err := input.GetData(pathFilePackages)
 		if err != nil {
@@ -31,11 +40,16 @@ Trouxa is a simple application to install and remove packages at once by just us
 		}
 		packages := parser.Parse(data)
 		for _, package_ := range packages {
-			if ok, err := manager.InstallPackage(package_.Name, commander.BuildInstallCommand(package_.Name)); !ok {
-				log.Fatalln("Could not install ", package_.Name, ". Aborting cuz' ", err)
+			if !installPackage(package_.Name, commander) {
+				log.Infoln("Fail to install: ", package_.Name)
+				addTo(&failInstalledPackages, package_.Name)
+				continue
 			}
+			log.Infoln("Successful installation of: ", package_.Name)
+			addTo(&successInstalledPackages, package_.Name)
 		}
-		log.Infoln("All packages have installed!")
+		log.Infoln("Total success package's installation:", successInstalledPackages)
+		log.Infoln("Total fail package's installation:", failInstalledPackages)
 		os.Exit(0)
 	},
 }
