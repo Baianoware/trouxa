@@ -6,7 +6,7 @@ It is an easy and fast tool to install your packages with just one command.
 
 ### What means "Trouxa"?
 
-In portuguese, Trouxa means something like a "bundle of clothes", but it is also a pejorative term like mug, gink, muggle. 
+In portuguese, Trouxa means something like a "bundle of clothes", but it is also a pejorative term like mug or muggle. 
 Thinking in the first meaning, why not let this bundle carry Packages too? (It does not make sense, I know lol)
 
 ### Why use it?

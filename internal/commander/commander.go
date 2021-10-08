@@ -11,7 +11,7 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-// Commander interface with methods used to build install and unistall commands
+// Commander interface with methods used to build install and uninstall commands
 type Commander interface {
 	BuildInstallCommand(name string) *exec.Cmd
 	BuildUninstallCommand(name string) *exec.Cmd

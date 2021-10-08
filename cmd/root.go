@@ -4,7 +4,7 @@ import (
 	"github.com/Bainoware/trouxa/internal/commander"
 	"github.com/Bainoware/trouxa/internal/input"
 	"github.com/Bainoware/trouxa/internal/manager"
-	parser "github.com/Bainoware/trouxa/internal/parser"
+	"github.com/Bainoware/trouxa/internal/parser"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 	"os"
