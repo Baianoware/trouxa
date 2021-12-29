@@ -20,9 +20,12 @@ jobs:
         
     - name: Run golangci-lint
       uses: golangci/golangci-lint-action@v2.5.2
-
+      
+    - name: Test
+      run: go test -v ./...
+      
     - name: Build
       run: go build -v ./...
 
-    - name: Test
-      run: go test -v ./...
+    - name: Binary
+      uses: ngs/go-release.action@v1.0.2
