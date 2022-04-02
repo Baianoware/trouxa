@@ -8,7 +8,7 @@ import (
 	"github.com/Bainoware/trouxa/internal/entities"
 )
 
-// Parse the packages' list to entities.Packages
+// Parse the packages' list from config file to entities.Packages.
 func Parse(data []byte) []entities.Package {
 	// Gets all lines.
 	lines := strings.Split(string(data), "\n")

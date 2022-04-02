@@ -1,12 +1,13 @@
 package input
 
 import (
-	"github.com/pkg/errors"
-	log "github.com/sirupsen/logrus"
 	"io/ioutil"
 	"net/http"
 	"regexp"
 	"strings"
+
+	"github.com/pkg/errors"
+	log "github.com/sirupsen/logrus"
 )
 
 func isURL(input string) bool {

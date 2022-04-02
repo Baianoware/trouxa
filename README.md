@@ -41,7 +41,7 @@ trouxa -m pacman -p https://pastebin.com/raw/ysHUVswx
 ## How to install
 
 ### Build
-To build you will need the `Go` environment in version `1.16` and `make` installed.
+To build you will need the `Go` environment in version `1.18` and `make` installed.
 ```sh
 make build
 ```
