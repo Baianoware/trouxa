@@ -59,7 +59,7 @@ The binary compiled will be copied to your `/usr/bin` and available through the 
 - Fast
 - Simple
 
-## Examples
+## Dump
 
 ### apk
 You can list all packages from a Alpine container, as exemple, and use this "dump" to install in another:
