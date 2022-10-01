@@ -33,10 +33,15 @@ trouxa -m pacman -p https://pastebin.com/raw/ysHUVswx
 
 
 ## Package managers supported
-- pacman
-- yay
-- apt
 - apk
+- apt
+- aptitude
+- dnf
+- pacman
+- snap
+- yay
+- yum
+- zypper
 
 ## How to install
 
