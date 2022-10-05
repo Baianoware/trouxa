@@ -19,5 +19,5 @@ func (a *Commander) BuildUninstallCommand(name string) *exec.Cmd {
 
 // DumpPackages lists all installed packages from aptitude
 func (a *Commander) DumpPackages() *exec.Cmd {
-	return exec.Command("aptitude", "list", "--installed")
+	return exec.Command("aptitude", "search", "~i")
 }
