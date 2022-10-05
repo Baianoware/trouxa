@@ -40,7 +40,7 @@ func FromName(name string) Commander {
 	case "dnf":
 		return new(dnf.Commander)
 	case "eopkg":
-		return new(eopkg.Commaner)
+		return new(eopkg.Commander)
 	case "pacman":
 		return new(pacman.Commander)
 	case "snap":
