@@ -8,6 +8,7 @@ import (
 	"github.com/Bainoware/trouxa/internal/manager/apt"
 	"github.com/Bainoware/trouxa/internal/manager/aptitude"
 	"github.com/Bainoware/trouxa/internal/manager/dnf"
+	"github.com/Bainoware/trouxa/internal/manager/eopkg"
 	"github.com/Bainoware/trouxa/internal/manager/pacman"
 	"github.com/Bainoware/trouxa/internal/manager/snap"
 	"github.com/Bainoware/trouxa/internal/manager/yay"
@@ -38,6 +39,8 @@ func FromName(name string) Commander {
 		return new(aptitude.Commander)
 	case "dnf":
 		return new(dnf.Commander)
+	case "eopkg":
+		return new(eopkg.Commaner)
 	case "pacman":
 		return new(pacman.Commander)
 	case "snap":
