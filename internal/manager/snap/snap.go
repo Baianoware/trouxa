@@ -19,5 +19,5 @@ func (p *Commander) BuildUninstallCommand(name string) *exec.Cmd {
 
 // DumpPackages lists all installed packages from snap
 func (a *Commander) DumpPackages() *exec.Cmd {
-	return exec.Command("snap", "list")
+	return exec.Command("snap", "list", "--all")
 }
