@@ -50,6 +50,7 @@ The binary compiled will be copied to your `/usr/bin` and available through the 
 - apt
 - aptitude
 - dnf
+- eopkg
 - pacman
 - snap
 - yay
