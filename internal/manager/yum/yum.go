@@ -16,3 +16,8 @@ func (p *Commander) BuildInstallCommand(name string) *exec.Cmd {
 func (p *Commander) BuildUninstallCommand(name string) *exec.Cmd {
 	return exec.Command("yum", "remove", "-y", name)
 }
+
+// DumpPackages lists all installed packages from yum
+func (a *Commander) DumpPackages() *exec.Cmd {
+	return exec.Command("yum", "list", "installed")
+}

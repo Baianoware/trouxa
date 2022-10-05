@@ -16,3 +16,8 @@ func (p *Commander) BuildInstallCommand(name string) *exec.Cmd {
 func (p *Commander) BuildUninstallCommand(name string) *exec.Cmd {
 	return exec.Command("dnf", "remove", "-y", name)
 }
+
+// DumpPackages lists all installed packages from dnf
+func (a *Commander) DumpPackages() *exec.Cmd {
+	return exec.Command("dnf", "list", "installed")
+}
