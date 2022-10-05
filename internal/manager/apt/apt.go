@@ -16,3 +16,8 @@ func (a *Commander) BuildInstallCommand(name string) *exec.Cmd {
 func (a *Commander) BuildUninstallCommand(name string) *exec.Cmd {
 	return exec.Command("apt", "remove", name, "-y")
 }
+
+// DumpPackages lists all installed packages from apt
+func (a *Commander) DumpPackages() *exec.Cmd {
+	return exec.Command("apt", "list")
+}

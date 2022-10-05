@@ -20,7 +20,7 @@ var RootCmd = &cobra.Command{
 	Long: `
 Trouxa is a simple application to install and remove packages at once by just using a simple text file.
 `,
-	Version: "0.0.1",
+	Version: "0.1.0",
 	Run: func(command *cobra.Command, args []string) {
 		installPackage := func(name string, commander commander.Commander) bool {
 			ok, _ := manager.InstallPackage(name, commander.BuildInstallCommand(name))
@@ -34,6 +34,11 @@ Trouxa is a simple application to install and remove packages at once by just us
 		commander := commander.FromName(packageManager)
 		if commander == nil {
 			log.Fatalln("This package manager is not supported or invalid for your system!")
+		}
+		if dump, _ := command.Flags().GetBool("dump"); dump {
+			log.Debugln("Entered dump, will do nothing else")
+			manager.ListPackages(commander.DumpPackages())
+			os.Exit(0)
 		}
 		data, err := input.GetData(pathFilePackages)
 		if err != nil {
@@ -61,7 +66,7 @@ func init() {
 		"manager",
 		"m",
 		"",
-		"Package manager to download your packages. apt | pacman | yay | apk",
+		"Package manager to download your packages",
 	)
 	err := RootCmd.MarkFlagRequired("manager")
 	if err != nil {
@@ -73,4 +78,8 @@ func init() {
 		"p",
 		"./packages.txt",
 		"The file used by Trouxa to download de packages to your system")
+	RootCmd.Flags().Bool(
+		"dump",
+		false,
+		"List all installed packages in this package manager and exit")
 }

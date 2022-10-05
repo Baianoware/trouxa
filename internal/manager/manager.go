@@ -31,7 +31,7 @@ func IsValid(name string) error {
 	return nil
 }
 
-// InstallPackage install a package with the apt package manager
+// InstallPackage install a package with a package manager
 func InstallPackage(name string, cmd *exec.Cmd) (bool, error) {
 	log.Infoln("Trying to install the package: ", name)
 	if ok, err := runCommand(cmd); !ok {
@@ -44,7 +44,7 @@ func InstallPackage(name string, cmd *exec.Cmd) (bool, error) {
 	return true, nil
 }
 
-// UninstallPackage uninstall a package with the apt package manager
+// UninstallPackage uninstall a package with a package manager
 func UninstallPackage(name string, cmd *exec.Cmd) (bool, error) {
 	log.Infoln("Uninstalling package: ", name)
 	if ok, err := runCommand(cmd); !ok {
@@ -53,6 +53,18 @@ func UninstallPackage(name string, cmd *exec.Cmd) (bool, error) {
 		return false, err
 	}
 	log.Errorln("Package uninstalled: ", name)
+
+	return true, nil
+}
+
+// ListPackages dumps all the installed packages via a package manager
+func ListPackages(cmd *exec.Cmd) (bool, error) {
+	log.Infoln("Listing packages")
+	if ok, err := runCommand(cmd); !ok {
+		log.Errorln("Could not list packages: ", err)
+
+		return false, err
+	}
 
 	return true, nil
 }
