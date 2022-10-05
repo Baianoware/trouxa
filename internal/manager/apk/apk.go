@@ -16,3 +16,8 @@ func (p *Commander) BuildInstallCommand(name string) *exec.Cmd {
 func (p *Commander) BuildUninstallCommand(name string) *exec.Cmd {
 	return exec.Command("apk", "del", name)
 }
+
+// DumpPackages lists all installed packages from apk
+func (a *Commander) DumpPackages() *exec.Cmd {
+	return exec.Command("apk", "list", "--installed")
+}
