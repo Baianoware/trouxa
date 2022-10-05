@@ -9,8 +9,8 @@ It is an easy and fast tool to install your packages with just one command.
 In portuguese, Trouxa means something like a "bundle of clothes", but it is also a pejorative term like mug or muggle. 
 Thinking in the first meaning, why not let this bundle carry Packages too? (It does not make sense, I know lol)
 
-### Why use it?
-With trouxa, you can install many packages just noting it in a file, `packages.txt`, and selecting your package manager.
+## How to use?
+With trouxa, you can install many packages just noting it in a file, `packages.txt`.
 
 Example of `packages.txt`
 ```text
@@ -18,7 +18,7 @@ python
 vim
 nano
 ```
-and run it selecting the path of `packages.txt`
+Selectig the package manager used on your system, and and run it selecting the path of `packages.txt`
 ```sh
 trouxa -m pacman -p ~/packages.txt
 ```
@@ -31,19 +31,7 @@ You can use also a remote packages' list to install you tools
 trouxa -m pacman -p https://pastebin.com/raw/ysHUVswx
 ```
 
-
-## Package managers supported
-- apk
-- apt
-- aptitude
-- dnf
-- pacman
-- snap
-- yay
-- yum
-- zypper
-
-## How to install
+## How to install?
 
 ### Build
 To build you will need the `Go` environment in version `1.18` and `make` installed.
@@ -57,12 +45,16 @@ sudo make install
 ```
 The binary compiled will be copied to your `/usr/bin` and available through the command trouxa in your terminal
 
-## Features 
-
-- Portable
-- Easy
-- Fast
-- Simple
+## Package managers supported
+- apk
+- apt
+- aptitude
+- dnf
+- pacman
+- snap
+- yay
+- yum
+- zypper
 
 ## Dump
 
