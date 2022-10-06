@@ -21,7 +21,7 @@ import (
 type Commander interface {
 	BuildInstallCommand(name string) *exec.Cmd
 	BuildUninstallCommand(name string) *exec.Cmd
-	DumpPackages() *exec.Cmd
+	ListPackages() *exec.Cmd
 }
 
 // FromName create a commander from a package manager mane

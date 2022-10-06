@@ -35,9 +35,9 @@ Trouxa is a simple application to install and remove packages at once by just us
 		if commander == nil {
 			log.Fatalln("This package manager is not supported or invalid for your system!")
 		}
-		if dump, _ := command.Flags().GetBool("dump"); dump {
-			log.Debugln("Entered dump, will do nothing else")
-			ok, err := manager.ListPackages(commander.DumpPackages())
+		if list, _ := command.Flags().GetBool("list"); list {
+			log.Debugln("Entered list, will do nothing else")
+			ok, err := manager.ListPackages(commander.listPackages())
 			if !ok {
 				log.Errorln("Failed to list packages: ", err)
 				os.Exit(1)
@@ -83,7 +83,7 @@ func init() {
 		"./packages.txt",
 		"The file used by Trouxa to download de packages to your system")
 	RootCmd.Flags().Bool(
-		"dump",
+		"list",
 		false,
 		"List all installed packages in this package manager and exit")
 }

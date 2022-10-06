@@ -17,7 +17,7 @@ func (p *Commander) BuildUninstallCommand(name string) *exec.Cmd {
 	return exec.Command("eopkg", "remove", "-y", name)
 }
 
-// DumpPackages lists all installed packages from eopkg
-func (a *Commander) DumpPackages() *exec.Cmd {
+// ListPackages lists all installed packages from eopkg
+func (a *Commander) ListPackages() *exec.Cmd {
 	return exec.Command("eopkg", "li")
 }

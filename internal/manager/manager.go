@@ -57,7 +57,7 @@ func UninstallPackage(name string, cmd *exec.Cmd) (bool, error) {
 	return true, nil
 }
 
-// ListPackages dumps all the installed packages via a package manager
+// ListPackages lists all the installed packages via a package manager
 func ListPackages(cmd *exec.Cmd) (bool, error) {
 	log.Infoln("Listing packages")
 	if ok, err := runCommand(cmd); !ok {

@@ -17,7 +17,7 @@ func (p *Commander) BuildUninstallCommand(name string) *exec.Cmd {
 	return exec.Command("pacman", "-Rs", name, "--noconfirm")
 }
 
-// DumpPackages lists all installed packages from pacman
-func (a *Commander) DumpPackages() *exec.Cmd {
+// ListPackages lists all installed packages from pacman
+func (a *Commander) ListPackages() *exec.Cmd {
 	return exec.Command("pacman", "-Qe")
 }
