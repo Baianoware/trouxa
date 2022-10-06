@@ -37,7 +37,7 @@ Trouxa is a simple application to install and remove packages at once by just us
 		}
 		if list, _ := command.Flags().GetBool("list"); list {
 			log.Debugln("Entered list, will do nothing else")
-			ok, err := manager.ListPackages(commander.listPackages())
+			ok, err := manager.ListPackages(commander.ListPackages())
 			if !ok {
 				log.Errorln("Failed to list packages: ", err)
 				os.Exit(1)
