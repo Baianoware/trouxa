@@ -17,7 +17,7 @@ func (a *Commander) BuildUninstallCommand(name string) *exec.Cmd {
 	return exec.Command("apt", "remove", name, "-y")
 }
 
-// DumpPackages lists all installed packages from apt
-func (a *Commander) DumpPackages() *exec.Cmd {
+// ListPackages lists all installed packages from apt
+func (a *Commander) ListPackages() *exec.Cmd {
 	return exec.Command("apt", "list", "--installed")
 }
