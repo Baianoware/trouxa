@@ -4,8 +4,7 @@ import (
 	"os/exec"
 )
 
-type Commander struct {
-}
+type Commander struct{}
 
 // BuildInstallCommand create the installation command to apk
 func (p *Commander) BuildInstallCommand(name string) *exec.Cmd {

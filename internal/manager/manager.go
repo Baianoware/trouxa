@@ -1,23 +1,32 @@
 package manager
 
 import (
+	"bytes"
 	"os"
 	"os/exec"
-
-	log "github.com/sirupsen/logrus"
 )
 
-func runCommand(cmd *exec.Cmd) (bool, error) {
+func pipe(cmd *exec.Cmd) {
+	cmd.Stdin = os.Stdin
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
-	log.Debugln("Trying to run the command")
-	err := cmd.Run()
-	if err != nil {
-		log.WithError(err).Debugln("Could not run the command")
+}
+
+func run(cmd *exec.Cmd) (bool, error) {
+	write := func(b *bytes.Buffer) (int, error) {
+		return os.Stdout.Write(b.Bytes())
+	}
+
+	mem := bytes.NewBuffer(nil)
+	cmd.Stdin = os.Stdin
+	cmd.Stdout = mem
+	cmd.Stderr = mem
+
+	if err := cmd.Run(); err != nil {
+		write(mem)
 
 		return false, err
 	}
-	log.Debug("Command executed")
 
 	return true, nil
 }
@@ -33,36 +42,26 @@ func IsValid(name string) error {
 
 // InstallPackage install a package with a package manager
 func InstallPackage(name string, cmd *exec.Cmd) (bool, error) {
-	log.Infoln("Trying to install the package: ", name)
-	if ok, err := runCommand(cmd); !ok {
-		log.WithError(err).Errorln("Could not install the package. ")
-
+	if ok, err := run(cmd); !ok || err != nil {
 		return false, err
 	}
-	log.Infoln("Package installed: ", name)
 
 	return true, nil
 }
 
 // UninstallPackage uninstall a package with a package manager
 func UninstallPackage(name string, cmd *exec.Cmd) (bool, error) {
-	log.Infoln("Uninstalling package: ", name)
-	if ok, err := runCommand(cmd); !ok {
-		log.Errorln("Could not uninstall the package ", err)
-
+	if ok, err := run(cmd); !ok || err != nil {
 		return false, err
 	}
-	log.Errorln("Package uninstalled: ", name)
 
 	return true, nil
 }
 
 // ListPackages lists all the installed packages via a package manager
 func ListPackages(cmd *exec.Cmd) (bool, error) {
-	log.Infoln("Listing packages")
-	if ok, err := runCommand(cmd); !ok {
-		log.Errorln("Could not list packages: ", err)
-
+	pipe(cmd)
+	if err := cmd.Run(); err != nil {
 		return false, err
 	}
 

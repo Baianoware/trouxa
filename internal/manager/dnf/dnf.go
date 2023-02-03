@@ -4,8 +4,7 @@ import (
 	"os/exec"
 )
 
-type Commander struct {
-}
+type Commander struct{}
 
 // BuildInstallCommand create the installation command to dnf
 func (p *Commander) BuildInstallCommand(name string) *exec.Cmd {

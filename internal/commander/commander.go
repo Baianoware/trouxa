@@ -1,6 +1,7 @@
 package commander
 
 import (
+	"fmt"
 	"os/exec"
 
 	"github.com/Bainoware/trouxa/internal/manager"
@@ -14,7 +15,6 @@ import (
 	"github.com/Bainoware/trouxa/internal/manager/yay"
 	"github.com/Bainoware/trouxa/internal/manager/yum"
 	"github.com/Bainoware/trouxa/internal/manager/zypper"
-	log "github.com/sirupsen/logrus"
 )
 
 // Commander interface with methods used to build install and uninstall commands
@@ -25,34 +25,33 @@ type Commander interface {
 }
 
 // FromName create a commander from a package manager mane
-func FromName(name string) Commander {
+func FromName(name string) (Commander, error) {
 	if err := manager.IsValid(name); err != nil {
-		log.Debugln("Package manager not found on user's path")
-		return nil
+		return nil, fmt.Errorf("Package manager not found on user's path: %w", err)
 	}
 	// To no use reflection...
 	switch name {
 	case "apt":
-		return new(apt.Commander)
+		return new(apt.Commander), nil
 	case "apk":
-		return new(apk.Commander)
+		return new(apk.Commander), nil
 	case "aptitude":
-		return new(aptitude.Commander)
+		return new(aptitude.Commander), nil
 	case "dnf":
-		return new(dnf.Commander)
+		return new(dnf.Commander), nil
 	case "eopkg":
-		return new(eopkg.Commander)
+		return new(eopkg.Commander), nil
 	case "pacman":
-		return new(pacman.Commander)
+		return new(pacman.Commander), nil
 	case "snap":
-		return new(snap.Commander)
+		return new(snap.Commander), nil
 	case "yay":
-		return new(yay.Commander)
+		return new(yay.Commander), nil
 	case "yum":
-		return new(yum.Commander)
+		return new(yum.Commander), nil
 	case "zypper":
-		return new(zypper.Commander)
+		return new(zypper.Commander), nil
 	default:
-		return nil
+		return nil, fmt.Errorf("Package manager not found on user's path")
 	}
 }
