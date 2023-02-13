@@ -18,7 +18,7 @@ python
 vim
 nano
 ```
-Selectig the package manager used on your system, and and run it selecting the path of `packages.txt`
+Selecting the package manager used on your system, and and run it selecting the path of `packages.txt`
 ```sh
 trouxa -m pacman -p ~/packages.txt
 ```

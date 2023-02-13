@@ -23,7 +23,9 @@ func run(cmd *exec.Cmd) (bool, error) {
 	cmd.Stderr = mem
 
 	if err := cmd.Run(); err != nil {
-		write(mem)
+		if _, err := write(mem); err != nil {
+			return false, err
+		}
 
 		return false, err
 	}
